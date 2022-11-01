@@ -25,7 +25,6 @@ except ValueError as ve:
     print(ve)
 
 
-
 #function for extract the plantilla of countrys each on of lista_links , return one links of player
 def plantilla_selecciones(lista_links_selecciones):
     try:        
@@ -44,7 +43,6 @@ def plantilla_selecciones(lista_links_selecciones):
             raise ValueError(f'Error: {peticion.status_code}')
     except ValueError as ve:
         print(ve)
-
 
 #function for extract each of link , the data of players
 def jugadores(links_jugadores):
@@ -72,13 +70,11 @@ def jugadores(links_jugadores):
                     'peso':info[2],
                     'seleccion':seleccion
             }
-            return jugador
-            
+            return jugador   
         else:
             raise ValueError(f'Eror: {peticion.status_code}')
     except ValueError as Ve:
         print(Ve)
-
 
 try:
     #this bucle retorn one list of plantillas of the 32 countrys
@@ -108,7 +104,7 @@ try:
                  'weight':peso,
                 'seleccion':seleccion,
                 }
-    print(data_frame)
+    #print(data_frame)
 
 except ValueError as Ve:
     print(Ve)
