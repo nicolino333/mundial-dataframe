@@ -38,5 +38,5 @@ db['High']=high
 db['Name']=name
 db['Weight']=weight
 new_db=db.reindex(columns=['Name','Weight','High','seleccion','age'])
-print(new_db)
-new_db.to_csv('MundialDataframe.csv')
+print(new_db.head())
+#new_db.to_csv('MundialDataframe.csv')
