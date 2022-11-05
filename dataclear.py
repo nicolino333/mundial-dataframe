@@ -5,9 +5,9 @@ from dataclasses import replace
 
 #we make to clear of db
 db=pd.read_csv('df-mundial.csv',index_col=0)
-#print(db.head())
-#print(db.dtypes)
-#print(db.info())
+print(db.head())
+print(db.dtypes)
+print(db.info())
 
 #clear of colum name
 col_name=db['name']
@@ -20,10 +20,8 @@ for i in range(0,len(col_name)):
             jugador=jugador.replace(j,'')
     name.append(jugador)
 
-
 #clear of colum high
 col_high=db['high']
-print(col_high)
 high=[]
 no_deseado_high=['A','l','t','u','r','a',':']
 for i in range(0,len(col_high)):
@@ -32,25 +30,38 @@ for i in range(0,len(col_high)):
         if j in high_:
             high_=high_.replace(j,'')
     high.append(high_)
-print(high[1])
     
-
-
-
 #clear of colum weight
-#col_weight=db['weight']
-#weight=[]
-#for j in range(0,len(col_weight)):
-#    new_col_weight=col_weight[j].replace('P','').replace('e','').replace('s','').replace('o','').replace(':','')
-#    weight.append(new_col_weight)
+col_weight=db['weight']
+weight=[]
+no_deseado_weight=['P','e','s','o',':']
+for i in range(0,len(col_weight)):
+    weight_=str(col_weight[i])
+    for j in no_deseado_weight:
+        if j in weight_:
+            weight_=weight_.replace(j,'')
+    weight.append(weight_)
 
+#clear of colum age
+col_age=db['age']
+age=[]
+no_deaseado_age=['E','d','a',':']
+for i in range(0,len(col_age)):
+    age_=str(col_age[i])
+    for j in no_deaseado_age:
+        if j in age_:
+            age_=age_.replace(j,'')
+    age.append(age_)
+    
 ##we create a new dataframe cleared
-#del db['high']
-#del db['name']
-#del db['weight']
-#db['High']=high
-#db['Name']=name
-#db['Weight']=weight
-#new_db=db.reindex(columns=['Name','Weight','High','seleccion','age'])
-#print(new_db.head())
-##new_db.to_csv('MundialDataframe.csv')#
+del db['high']
+del db['name']
+del db['weight']
+del db['age']
+db['High']=high
+db['Name']=name
+db['Weight']=weight
+db['Age']=age
+new_db=db.reindex(columns=['Name','Weight','High','seleccion','Age'])
+print(new_db.head())
+#new_db.to_csv('MundialDataframe.csv')
